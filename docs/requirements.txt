@@ -1,0 +1,9 @@
+numpy
+matplotlib
+sunpy_soar
+sunpy[all]
+sphinx
+sphinx-gallery
+nbsphinx
+jupyter
+sunpy-sphinx-theme

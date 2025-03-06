@@ -1,7 +1,7 @@
 numpy
 matplotlib
-sunpy_soar
-sunpy[all]
+sunpy  
+sunpy_soar  
 sphinx
 sphinx-gallery
 nbsphinx

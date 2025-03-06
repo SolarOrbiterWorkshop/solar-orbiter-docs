@@ -1,0 +1,632 @@
+{
+ "Fido.fetch": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.net.fido_factory",
+   "module_short": "sunpy.net.fido_factory",
+   "name": "UnifiedDownloaderFactory.fetch"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "UnifiedDownloaderFactory.fetch"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "UnifiedDownloaderFactory.fetch"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.util.datatype_factory_base",
+   "module_short": "sunpy.util.datatype_factory_base",
+   "name": "BasicRegistrationFactory.fetch"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.util",
+   "module_short": "sunpy.util",
+   "name": "BasicRegistrationFactory.fetch"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "BasicRegistrationFactory.fetch"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.net.Fido",
+   "module_short": "sunpy.net.Fido",
+   "name": "fetch"
+  }
+ ],
+ "Fido.search": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.net.fido_factory",
+   "module_short": "sunpy.net.fido_factory",
+   "name": "UnifiedDownloaderFactory.search"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "UnifiedDownloaderFactory.search"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "UnifiedDownloaderFactory.search"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.util.datatype_factory_base",
+   "module_short": "sunpy.util.datatype_factory_base",
+   "name": "BasicRegistrationFactory.search"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.util",
+   "module_short": "sunpy.util",
+   "name": "BasicRegistrationFactory.search"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "BasicRegistrationFactory.search"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.net.Fido",
+   "module_short": "sunpy.net.Fido",
+   "name": "search"
+  }
+ ],
+ "a.Level": [
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net.attrs",
+   "module_short": "sunpy.net.attrs",
+   "name": "Level"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "Level"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "Level"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net.attr",
+   "module_short": "sunpy.net.attr",
+   "name": "SimpleAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "SimpleAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "SimpleAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net.attr",
+   "module_short": "sunpy.net.attr",
+   "name": "DataAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "DataAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "DataAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net.attr",
+   "module_short": "sunpy.net.attr",
+   "name": "Attr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "Attr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "Attr"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.net.attrs",
+   "module_short": "sunpy.net.attrs",
+   "name": "Level"
+  }
+ ],
+ "a.Time": [
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net.attrs",
+   "module_short": "sunpy.net.attrs",
+   "name": "Time"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "Time"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "Time"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net.attr",
+   "module_short": "sunpy.net.attr",
+   "name": "Range"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "Range"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "Range"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net.attr",
+   "module_short": "sunpy.net.attr",
+   "name": "DataAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "DataAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "DataAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net.attr",
+   "module_short": "sunpy.net.attr",
+   "name": "Attr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "Attr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "Attr"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.net.attrs",
+   "module_short": "sunpy.net.attrs",
+   "name": "Time"
+  }
+ ],
+ "a.soar.Product": [
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy_soar.attrs",
+   "module_short": "sunpy_soar.attrs",
+   "name": "Product"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy_soar",
+   "module_short": "sunpy_soar",
+   "name": "Product"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net.attr",
+   "module_short": "sunpy.net.attr",
+   "name": "SimpleAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "SimpleAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "SimpleAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net.attr",
+   "module_short": "sunpy.net.attr",
+   "name": "DataAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "DataAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "DataAttr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net.attr",
+   "module_short": "sunpy.net.attr",
+   "name": "Attr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "Attr"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "Attr"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.net.attrs.soar",
+   "module_short": "sunpy.net.attrs.soar",
+   "name": "Product"
+  }
+ ],
+ "downloaded_files": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "parfive.results",
+   "module_short": "parfive",
+   "name": "Results"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "parfive",
+   "module_short": "parfive",
+   "name": "Results"
+  }
+ ],
+ "eui_map": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.map.sources.solo",
+   "module_short": "sunpy.map.sources",
+   "name": "EUIMap"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.map.sources",
+   "module_short": "sunpy.map.sources",
+   "name": "EUIMap"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.map",
+   "module_short": "sunpy.map",
+   "name": "EUIMap"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "EUIMap"
+  }
+ ],
+ "eui_map.plot": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.map.sources.solo",
+   "module_short": "sunpy.map.sources",
+   "name": "EUIMap.plot"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.map.sources",
+   "module_short": "sunpy.map.sources",
+   "name": "EUIMap.plot"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.map",
+   "module_short": "sunpy.map",
+   "name": "EUIMap.plot"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "EUIMap.plot"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.map.mapbase",
+   "module_short": "sunpy.map",
+   "name": "GenericMap.plot"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.map",
+   "module_short": "sunpy.map",
+   "name": "GenericMap.plot"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "GenericMap.plot"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "astropy.nddata.nddata",
+   "module_short": "astropy.nddata.nddata",
+   "name": "NDData.plot"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "astropy.nddata",
+   "module_short": "astropy.nddata",
+   "name": "NDData.plot"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "astropy",
+   "module_short": "astropy",
+   "name": "NDData.plot"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "astropy.nddata.nddata_base",
+   "module_short": "astropy.nddata.nddata_base",
+   "name": "NDDataBase.plot"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "astropy.nddata",
+   "module_short": "astropy.nddata",
+   "name": "NDDataBase.plot"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "astropy",
+   "module_short": "astropy",
+   "name": "NDDataBase.plot"
+  }
+ ],
+ "plt.colorbar": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "matplotlib.pyplot",
+   "module_short": "matplotlib.pyplot",
+   "name": "colorbar"
+  }
+ ],
+ "plt.figure": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "matplotlib.pyplot",
+   "module_short": "matplotlib.pyplot",
+   "name": "figure"
+  }
+ ],
+ "plt.show": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "matplotlib.pyplot",
+   "module_short": "matplotlib.pyplot",
+   "name": "show"
+  }
+ ],
+ "plt.title": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "matplotlib.pyplot",
+   "module_short": "matplotlib.pyplot",
+   "name": "title"
+  }
+ ],
+ "search_results": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.net.fido_factory",
+   "module_short": "sunpy.net.fido_factory",
+   "name": "UnifiedResponse"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.net",
+   "module_short": "sunpy.net",
+   "name": "UnifiedResponse"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "UnifiedResponse"
+  }
+ ],
+ "sunpy.map.Map": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.map.map_factory",
+   "module_short": "sunpy.map.map_factory",
+   "name": "MapFactory"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.map",
+   "module_short": "sunpy.map",
+   "name": "MapFactory"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy",
+   "module_short": "sunpy",
+   "name": "MapFactory"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "sunpy.map",
+   "module_short": "sunpy.map",
+   "name": "Map"
+  }
+ ]
+}

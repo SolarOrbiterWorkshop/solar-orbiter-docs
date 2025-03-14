@@ -4,6 +4,9 @@ sunpy[all]
 sunpy_soar 
 sphinx
 sphinx-gallery
+sphinx-design
+sphinx-copybutton  
+myst-nb  
+pydata-sphinx-theme  
 nbsphinx
-sphinx_rtd_theme
 jupyter

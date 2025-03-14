@@ -1,46 +1,86 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# For the full list of built-in configuration values, see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
-
-# -- Project information -----------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import os
 import sys
+from datetime import datetime
+
+# Add project root to path
 sys.path.insert(0, os.path.abspath('..'))
 
-
-project = 'Solar Orbiter Data Documentation'
-copyright = '2025, Laura Hayes'
-author = 'Laura Hayes'
-release = '0.1'
+# Project information
+project = "Solar Orbiter Tools"
+author = "Laura Hayes"
+copyright = f"{datetime.now().year}, {author}"
+release = "0.1"
 
 # -- General configuration ---------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-# Extensions
-# Sphinx extensions
+# Sphinx extensions (including Sphinx-Gallery)
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.napoleon',
-    'sphinx.ext.viewcode',
-    'sphinx_gallery.gen_gallery',  # Enables example gallery
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.viewcode",
+    "sphinx_gallery.gen_gallery",  # Example gallery
+    "sphinx_design",  # For the grid-style landing page
 ]
 
-
-templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
-
-
+# Paths
+templates_path = ["_templates"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # -- Options for HTML output -------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'sphinx_rtd_theme'
-html_static_path = ['_static']
+html_theme = "pydata_sphinx_theme"
 
-# Configure Sphinx-Gallery
+# Sidebar and Navigation
+html_sidebars = {
+    "index": ["search-button-field"],
+    "**": ["search-button-field", "sidebar-nav-bs"]
+}
+
+# Custom Theme Options
+html_theme_options = {
+    "logo": {
+        "text": "Solar Orbiter Docs",
+    },
+    "icon_links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/SolarOrbiterWorkshop/solar-orbiter-docs",
+            "icon": "fa-brands fa-github",
+        },
+        {
+            "name": "ESA Solar Orbiter",
+            "url": "https://www.esa.int/Science_Exploration/Space_Science/Solar_Orbiter",
+            "icon": "fa-solid fa-sun",
+        },
+        {
+            "name": "SunPy",
+            "url": "https://docs.sunpy.org/",
+            "icon": "fa-brands fa-python",
+        },
+    ],
+    "navbar_start": ["navbar-logo"],
+    "navbar_end": ["theme-switcher", "navbar-icon-links"],
+    "secondary_sidebar_items": ["page-toc"],
+}
+
+# Static files
+html_static_path = ["_static"]
+html_css_files = ["custom.css"]
+
+# -- Sphinx-Gallery Configuration (Example Gallery) --------------------------
+
 sphinx_gallery_conf = {
     'examples_dirs': '../examples',   # Path to example scripts
     'gallery_dirs': 'auto_gallery',   # Output path for gallery
+    'filename_pattern': r'.*\.py',    # Only include .py files
+    'download_all_examples': False,   # Don't zip all examples for download
+    'remove_config_comments': True,   # Clean up script headers
 }
+
+# Source file suffix
+source_suffix = ".rst"
+master_doc = "index"
+
+# Custom setup
+def setup(app):
+    app.add_css_file("custom.css")  # Add custom CSS for styling

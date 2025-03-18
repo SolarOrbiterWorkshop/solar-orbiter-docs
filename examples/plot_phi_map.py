@@ -3,11 +3,8 @@
 Finding and Plotting PHI Data
 =================================
 
-This example demonstrates how to:
-
-* Search for Solar Orbiter PHI (Polarimetric and Helioseismic Imager) data
-* Download a sample image
-* Plot it using SunPy
+This example demonstrates how to search for, download, and plot 
+Solar Orbiter PHI (Polarimetric and Helioseismic Imager) data using SunPy.
 
 PHI SOAR Product Codes:
 ----------------------------

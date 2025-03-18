@@ -3,11 +3,8 @@
 Finding and Plotting EUI Data
 ==================================
 
-This example demonstrates how to:
-
-* Search for Solar Orbiter EUI (Extreme Ultraviolet Imager) observations
-* Download a sample image
-* Plot it using SunPy
+This example demonstrates how to search for, download, and plot 
+Solar Orbiter EUI (Extreme Ultraviolet Imager) observations using SunPy.
 
 """
 

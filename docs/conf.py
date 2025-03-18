@@ -13,6 +13,11 @@ release = "0.1"
 
 # -- General configuration ---------------------------------------------------
 
+source_suffix = ".rst"
+
+# The master toctree document.
+master_doc = "index"
+
 # Sphinx extensions (including Sphinx-Gallery)
 extensions = [
     "sphinx.ext.autodoc",
@@ -20,21 +25,34 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx_gallery.gen_gallery",  # Example gallery
     "sphinx_design",  # For the grid-style landing page
+    "sphinx.ext.intersphinx",
 ]
+
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3", None),
+    "numpy": ("https://numpy.org/doc/stable/", None),
+    "scipy": ("https://docs.scipy.org/doc/scipy/", None),
+    "astropy": ("https://docs.astropy.org/en/stable/", None),
+    "sunpy": ("https://docs.sunpy.org/en/stable/", None),
+}
 
 # Paths
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # -- Options for HTML output -------------------------------------------------
-
+# Static files
+html_static_path = ["_static"]
+html_css_files = ["custom.css"]
+html_logo = "_static/SolarOrbiter.png"
 html_theme = "pydata_sphinx_theme"
 
+
 # Sidebar and Navigation
-html_sidebars = {
-    "index": ["search-button-field"],
-    "**": ["search-button-field", "sidebar-nav-bs"]
-}
+# html_sidebars = {
+#     "index": ["search-button-field"],
+#     "**": ["search-button-field", "sidebar-nav-bs"]
+# }
 
 # Custom Theme Options
 html_theme_options = {
@@ -63,9 +81,7 @@ html_theme_options = {
     "secondary_sidebar_items": ["page-toc"],
 }
 
-# Static files
-html_static_path = ["_static"]
-html_css_files = ["custom.css"]
+
 
 # -- Sphinx-Gallery Configuration (Example Gallery) --------------------------
 

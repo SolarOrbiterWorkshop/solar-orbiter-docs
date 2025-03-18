@@ -1,17 +1,25 @@
-:html_theme.sidebar_secondary.remove: true
+:html_theme.sidebar_primary.remove: true
 
-.. Solar Orbiter Data Documentation
+===================================
+Solar Orbiter Data Documentation
+===================================
 
-**Useful links**:
-`ESA Solar Orbiter <https://www.cosmos.esa.int/web/solar-orbiter>`__ |
-`Solar Orbiter Archive <https://soar.esac.esa.int/soar/>`__ |
-`GitHub Repository <https://github.com/SolarOrbiterWorkshop/solar-orbiter-docs>`__ |
-`SunPy Documentation <https://docs.sunpy.org/>`__ |
+Welcome to the Solar Orbiter Data Documentation! 🌞🚀  
 
+This is a **community-driven effort** to provide guides, examples, and resources 
+for working with Solar Orbiter data in Python, using the `SunPy <https://sunpy.org>`__ ecosystem.
 
-Solar Orbiter is a mission to study the Sun and inner heliosphere. This documentation provides **guides, examples, and tools** for working with **Solar Orbiter data** using Python.
+What is this Documentation For?
+=================================
 
----
+- **Helping researchers and enthusiasts** work with Solar Orbiter data.
+- **Providing interactive Python examples** for common data analysis tasks.
+- **Hosting useful links, resources, and tutorials.**
+- **Encouraging community contributions!**
+
+We welcome **contributions from everyone**! If you have an example, tutorial,  
+or useful link to share, check out the :doc:`Contributing Guide <contributing>`.
+
 
 .. grid:: 1 1 2 2
     :gutter: 2 3 4 4
@@ -34,23 +42,7 @@ Solar Orbiter is a mission to study the Sun and inner heliosphere. This document
 
             To the Getting Started Guide
 
-    .. grid-item-card::
-       :text-align: center
 
-       :material-outlined:`wb_sunny;8em;sd-text-secondary`
-
-       **Data Overview**
-       ^^^
-
-       Overview of available Solar Orbiter data products, including STIX, EUI, and more.
-
-       +++
-
-       .. button-ref:: data_overview
-           :color: secondary
-           :click-parent:
-
-           To the Data Overview
 
     .. grid-item-card::
         :text-align: center
@@ -88,13 +80,39 @@ Solar Orbiter is a mission to study the Sun and inner heliosphere. This document
 
             To the Example Gallery
 
----
+    .. grid-item-card::
+        :text-align: center
+
+        :material-outlined:`volunteer_activism;8em;sd-text-secondary`
+
+        **Contribute to the Docs**
+        ^^^
+
+        Help improve this documentation by adding examples, fixing typos, or suggesting new content.
+
+        +++
+
+        .. button-ref:: contributing
+            :color: secondary
+            :click-parent:
+
+            Go to Contributing Guide
+
+
+
+**Useful links**:
+`ESA Solar Orbiter <https://www.cosmos.esa.int/web/solar-orbiter>`__ |
+`Solar Orbiter Archive <https://soar.esac.esa.int/soar/>`__ |
+`GitHub Repository <https://github.com/SolarOrbiterWorkshop/solar-orbiter-docs>`__ |
+`SunPy Documentation <https://docs.sunpy.org/>`__ |
+
 
 .. toctree::
    :maxdepth: 1
    :hidden:
 
    Getting Started <getting_started>
-   Data Overview <data_overview>
-   Analysis Tools <analysis_tools>
+   Data and Tools Overview <data_overview/index>
+   Topic Guide <topic_guides/index>  
    Example Gallery <auto_gallery/index>
+   Contributing <contributing>

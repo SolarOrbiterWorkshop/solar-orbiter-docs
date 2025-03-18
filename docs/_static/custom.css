@@ -1,0 +1,15 @@
+html[data-theme="light"] {
+    --pst-color-primary: orange;
+    --pst-color-secondary: orange;
+}
+
+
+html[data-theme="dark"] {
+    --pst-color-primary: goldenrod;
+    --pst-color-secondary: goldenrod;
+}
+
+/* Adjust the width of the left sidebar */
+.bd-sidebar-primary {
+    width: 250px !important;  /* Default is around 300px */
+}

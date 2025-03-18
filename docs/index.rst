@@ -9,13 +9,15 @@ Welcome to the Solar Orbiter Data Documentation! 🌞🚀
 This is a **community-driven effort** to provide guides, examples, and resources 
 for working with Solar Orbiter data in Python, using the `SunPy <https://sunpy.org>`__ ecosystem.
 
+This documentation is part of the Solar Orbiter MADAWG "Python Working Group", aiming to support and promote the use of Python tools for Solar Orbiter data analysis.
+
 What is this Documentation For?
 =================================
 
-- **Helping researchers and enthusiasts** work with Solar Orbiter data.
-- **Providing interactive Python examples** for common data analysis tasks.
-- **Hosting useful links, resources, and tutorials.**
-- **Encouraging community contributions!**
+- Helping researchers and enthusiasts work with Solar Orbiter data.
+- Providing interactive Python examples for common data analysis tasks.
+- Hosting useful links, resources, and tutorials.
+- Encouraging community contributions!
 
 We welcome **contributions from everyone**! If you have an example, tutorial,  
 or useful link to share, check out the :doc:`Contributing Guide <contributing>`.

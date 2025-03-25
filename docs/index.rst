@@ -11,17 +11,6 @@ for working with Solar Orbiter data in Python, using the `SunPy <https://sunpy.o
 
 This documentation is part of the Solar Orbiter Modelling and Data Analysis Working Group (MADAWG) "Python Working Group", which aims to support and promote the use of Python tools for Solar Orbiter data analysis.
 
-What is this Documentation For?
-=================================
-
-- Helping researchers and enthusiasts work with Solar Orbiter data.
-- Providing interactive Python examples for common data analysis tasks.
-- Hosting useful links, resources, and tutorials.
-- Encouraging community contributions!
-
-We welcome **contributions from everyone**! If you have an example, tutorial,  
-or useful link to share, check out the :doc:`Contributing Guide <contributing>`.
-
 
 .. grid:: 1 1 2 2
     :gutter: 2 3 4 4
@@ -58,7 +47,7 @@ or useful link to share, check out the :doc:`Contributing Guide <contributing>`.
 
         +++
 
-        .. button-ref:: analysis_tools
+        .. button-ref:: data_overview/analysis_tools
             :color: secondary
             :click-parent:
 
@@ -101,6 +90,16 @@ or useful link to share, check out the :doc:`Contributing Guide <contributing>`.
             Go to Contributing Guide
 
 
+What is this Documentation For?
+=================================
+
+- Helping researchers and enthusiasts work with Solar Orbiter data.
+- Providing interactive Python examples for common data analysis tasks.
+- Hosting useful links, resources, and tutorials.
+- Encouraging community contributions!
+
+We welcome **contributions from everyone**! If you have an example, tutorial,  
+or useful link to share, check out the :doc:`Contributing Guide <contributing>`.
 
 **Useful links**:
 `ESA Solar Orbiter <https://www.cosmos.esa.int/web/solar-orbiter>`__ |

@@ -42,8 +42,7 @@ More details about each instrument can be found in the `Instrument Documentation
 
 Solar Orbiter Data Products
 ===========================
-Solar Orbiter data is publicly available via the **Solar Orbiter Archive (SOAR)**:  
-📌 `SOAR Data Archive <https://soar.esac.esa.int/soar/>`__
+Solar Orbiter data is publicly available via the `Solar Orbiter Archive (SOAR) <https://soar.esac.esa.int/soar/>`_.
 
 Each instrument provides different levels of processed data:
 
@@ -51,15 +50,10 @@ Each instrument provides different levels of processed data:
 - **Level 1**: Calibrated and corrected data.
 - **Level 2**: Fully processed, ready-to-use data.
 
-**Commonly used data products:**
-- **EUI**: High-resolution EUV images (`EUI-FSI174-IMAGE`)
-- **STIX**: X-ray flare light curves (`STIX-SPECTRUM`)
-- **PHI**: Solar magnetograms (`phi-hrt-blos`)
-- **RPW**: Radio burst frequency-time plots
 
 Accessing Solar Orbiter Data
 ============================
-The easiest way to access Solar Orbiter data is through **SunPy’s `Fido` search interface**.
+The easiest way to access Solar Orbiter data is through SunPy’s `Fido` search interface.
 
 Example query:
 
@@ -75,35 +69,19 @@ Example query:
 
     print(results)
 
-To learn more, see the **Example Gallery**.
+To learn more, see the `Example Gallery <auto_gallery/index.html>`_.
 
-Community Resources
-===================
-Solar Orbiter provides several **community tools and resources** to facilitate data analysis:
-
-- **Solar-MACH**: Multi-spacecraft longitudinal configuration plotter  
-  📌 `Solar-MACH Tool <https://solar-mach.github.io/>`__
-
-- **Magnetic Connectivity Tool**: Helps understand magnetic connectivity in the solar wind  
-  📌 `Magnetic Connectivity Tool <https://connect-tool.irap.omp.eu/>`__
-
-- **Combined In-Situ Plots**: Quick-look plots from multiple in-situ instruments  
-  📌 `Quicklook Plots <https://space.irfu.se/>`__
-
-- **SERPENTINE**: Solar Energetic Particle analysis tools  
-  📌 `SERPENTINE GitHub <https://github.com/serpentine-h2020>`__ | 📌 `SERPENTINE Hub <https://serpentine-h2020.eu/>`__
-
-For detailed tutorials and guides, refer to:  
-📌 `Data Tutorials <https://www.cosmos.esa.int/web/solar-orbiter/data-tutorials>`__
 
 Useful Links
 ============
-📌 **[ESA Solar Orbiter Homepage](https://www.esa.int/Science_Exploration/Space_Science/Solar_Orbiter)**  
-📌 **[Solar Orbiter Archive (SOAR)](https://soar.esac.esa.int/soar/)**  
-📌 **[Instrument Documentation](https://www.cosmos.esa.int/web/soar/instrument-documentation)**  
-📌 **[Solar Orbiter Publications](https://www.cosmos.esa.int/web/solar-orbiter/publications)**  
+
+- `ESA Solar Orbiter Homepage <https://www.esa.int/Science_Exploration/Space_Science/Solar_Orbiter>`_
+- `Solar Orbiter Archive (SOAR) <https://soar.esac.esa.int/soar/>`_
+- `Instrument Documentation <https://www.cosmos.esa.int/web/soar/instrument-documentation>`_
+- `Solar Orbiter Publications <https://www.cosmos.esa.int/web/solar-orbiter/publications>`_
 
 For contributions, suggestions, or reporting issues, see the :doc:`Contributing Guide </contributing>`.
+
 
 
 ---

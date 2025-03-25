@@ -1,7 +1,7 @@
 """
-=========================================
+===========================================
 Finding and Plotting Solar Orbiter MAG Data
-=========================================
+===========================================
 
 This example demonstrates how to search for, download, and visualize 1-minute averaged Solar Orbiter 
 MAG (Magnetometer) data from the SOAR archive, load it into a SunPy TimeSeries, and plot it.
@@ -38,7 +38,7 @@ downloaded_files = Fido.fetch(search_results)
 
 ###############################################################################
 # Loading the MAG Data into a SunPy TimeSeries
-# -------------------------------------------
+# --------------------------------------------
 #
 # The downloaded file contains time-series magnetic field measurements.
 # We use `sunpy.timeseries.TimeSeries` to load and analyse the data.

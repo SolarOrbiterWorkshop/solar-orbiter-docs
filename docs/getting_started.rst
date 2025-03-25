@@ -71,13 +71,16 @@ Next Steps
 
 Once your setup is complete, check out the following resources:
 
-* :doc:`data_overview/analysis_tools`  
+* :doc:`data_overview/index`:  
+  Learn more about the Solar Orbiter data products, observations and other resources.
+
+* :doc:`data_overview/analysis_tools`: 
   Learn about additional community-developed Python tools for working with Solar Orbiter data.
 
-* :doc:`auto_gallery/index`  
+* :doc:`auto_gallery/index`:  
   Browse practical examples of how to query, download, and analyze Solar Orbiter observations.
 
-* :doc:`contributing`  
+* :doc:`contributing`:  
   Want to contribute examples or improve the documentation? Find out how you can help!
 
 

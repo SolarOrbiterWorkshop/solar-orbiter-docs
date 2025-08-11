@@ -106,9 +106,10 @@ def stokes_noise(stokes_values, show=False):
     return p
 
 ###############################################################################
-# Searching for PHI-HRT Blos Data (Everything also applies to FDT data)
+# Searching for PHI-HRT Blos Data 
 # -----------------------------------------
 #
+# (Everything also applies to FDT data)
 # We first search for **Solar Orbiter PHI-HRT** (High Resolution Telescope) **Blos** data
 # in a given time range. The search results will return metadata about available files.
 

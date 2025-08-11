@@ -82,11 +82,11 @@ def get_lp(stokes, contpos = None, net = False):
 
     LP = np.zeros(stokes.shape[-2:]) #map for each pixel
 
-    if contpos == 0: wl = [1,2,4,5] #skip line core
-    elif contpos == 5: wl = [0,1,3,4] #skip line core
+    if contpos == 0: wl = [1,2,3,4,5] #include line core
+    elif contpos == 5: wl = [0,1,2,3,4] #include line core
     else: raise ValueError("Invalid contpos value. Use 0 or 5.")
 
-    for i in wl:
+    for n,i in enumerate(wl):
         LP += 0.25 * np.sqrt((Q[i]-Q[contpos])**2 + (U[i]-U[contpos])**2)/norm[i]
 
     return LP
@@ -109,7 +109,11 @@ def get_tp(stokes, contpos = None, net = False):
 
     TP = np.zeros(stokes.shape[-2:]) #map for each pixel
 
-    for i in range(4):
+    if contpos == 0: wl = [1,2,3,4,5] #include line core
+    elif contpos == 5: wl = [0,1,2,3,4] #include line core
+    else: raise ValueError("Invalid contpos value. Use 0 or 5.")
+
+    for i in wl:
         TP += 0.25 * np.sqrt((Q[i]-Q[contpos])**2 + (U[i]-U[contpos])**2 + (V[i]-V[contpos])**2)/norm[i]
 
     return TP

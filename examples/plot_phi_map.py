@@ -63,8 +63,8 @@ phi_hrt_blos_map = sunpy.map.Map(files_phi_hrt[0])
 
 # Update the Plot settings
 phi_hrt_blos_map.plot_settings['cmap'] = 'hmimag'
-phi_hrt_blos_map.plot_settings['vmin'] = -2000
-phi_hrt_blos_map.plot_settings['vmax'] = 2000
+phi_hrt_blos_map.plot_settings['vmin'] = -1500
+phi_hrt_blos_map.plot_settings['vmax'] = 1500
 
 # Plot the PHI image
 plt.figure(figsize=(8, 6))
@@ -88,11 +88,6 @@ files_phi_fdt = Fido.fetch(search_results_phi_fdt[0, 0])#, path='./your/path/to/
 # Load the downloaded PHI-FDT blos image
 phi_fdt_blos_map = sunpy.map.Map(files_phi_fdt[0]).rotate(recenter = True) # Rotate the image to the correct orientation
 
-# Update the Plot settings
-phi_fdt_blos_map.plot_settings['cmap'] = 'hmimag'
-phi_fdt_blos_map.plot_settings['vmin'] = -2000
-phi_fdt_blos_map.plot_settings['vmax'] = 2000
-
 #clean up the off-disc pixels for better visualization
 
 #here we find the coordinators that are on the solar disk and create a mask
@@ -101,6 +96,11 @@ mask = ~sunpy.map.coordinate_is_on_solar_disk(hpc_coords)
 
 #create a sunpy map object, with a mask which is applied when plotting
 phi_fdt_blos_map = sunpy.map.Map(phi_fdt_blos_map.data,phi_fdt_blos_map.meta, mask=mask)
+
+# Update the Plot settings
+phi_fdt_blos_map.plot_settings['cmap'] = 'hmimag'
+phi_fdt_blos_map.plot_settings['vmin'] = -1500
+phi_fdt_blos_map.plot_settings['vmax'] = 1500
 
 # Plot the PHI image
 plt.figure(figsize=(8, 6))

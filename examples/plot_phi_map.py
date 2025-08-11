@@ -1,35 +1,33 @@
 """
-Finding and Plotting Solar Orbiter PHI Data
-===========================================
+=================================
+Finding and Plotting PHI Data
+=================================
 
-This example demonstrates how to:
-- Search for Solar Orbiter PHI (Polarimetric and Helioseismic Imager) data
-- Download a sample image
-- Plot it using SunPy
+This example demonstrates how to search for, download, and plot 
+Solar Orbiter PHI (Polarimetric and Helioseismic Imager) data using SunPy.
 
-PHI SOAR product Codes:
+PHI SOAR Product Codes:
+----------------------------
 
-HRT (High Resolution Telescope)
-'phi-hrt-blos'
-'phi-hrt-bmag'
-'phi-hrt-binc'
-'phi-hrt-bazi'
-'phi-hrt-icnt'
-'phi-hrt-stokes'
-'phi-hrt-vlos'
+**HRT (High Resolution Telescope)**  
+ * `phi-hrt-blos` (Line-of-sight Magnetic Field)
+ * `phi-hrt-bmag` (Total Magnetic Field Strength)
+ * `phi-hrt-binc` (Inclination of Magnetic Field)
+ * `phi-hrt-bazi` (Azimuth of Magnetic Field)
+ * `phi-hrt-icnt` (Continuum Intensity)
+ * `phi-hrt-stokes` (Stokes Parameters)
+ * `phi-hrt-vlos` (Line-of-sight Velocity)
 
-FDT (Full Disc Telescope)
+**FDT (Full Disc Telescope)**  
 
-Currently only the continuum Intensity and Line-of-sight Magnetic Field (Blos) have been released to SOAR for FDT:
-'phi-fdt-blos'
-'phi-fdt-icnt'
+Currently, only **Continuum Intensity** (`phi-fdt-icnt`) and **Blos** (`phi-fdt-blos`) are available in SOAR.
 
-In Future additionally:
-'phi-fdt-bmag'
-'phi-fdt-binc'
-'phi-fdt-bazi'
-'phi-fdt-stokes'
-'phi-fdt-vlos'
+Future releases will include:
+ * `phi-fdt-bmag`
+ * `phi-fdt-binc`
+ * `phi-fdt-bazi`
+ * `phi-fdt-stokes`
+ * `phi-fdt-vlos`
 """
 
 import sunpy_soar
@@ -40,25 +38,44 @@ import sunpy.visualization.colormaps
 import matplotlib.pyplot as plt
 
 
-# ---------------------------------------------------------------
-# HRT Blos map
-# ---------------------------------------------------------------
+###############################################################################
+# Searching for PHI-HRT Blos Data
+# --------------------------------
+#
+# We first search for **Solar Orbiter PHI-HRT** (High Resolution Telescope) **Blos** data
+# in a given time range. The search results will return metadata about available files.
+
 
 t_start_hrt = Time('2022-03-03T09:40', format='isot', scale='utc')
 t_end_hrt = Time('2022-03-03T9:41', format='isot', scale='utc')
 
 search_results_phi_hrt = Fido.search(a.Instrument('PHI'), a.Time(t_start_hrt.value, t_end_hrt.value), a.soar.Product('phi-hrt-blos'))
 
-"""
-To search for two products simultaneously, use the '|' operator:
-#results_phi = Fido.search(a.Instrument('PHI'), a.Time(t_start.value, t_end.value), (a.soar.Product('phi-hrt-blos') | a.soar.Product('phi-hrt-icnt')))
-"""
+###############################################
+# To search for two products simultaneously, use the '|' operator:
+# `results_phi = Fido.search(a.Instrument('PHI'), a.Time(t_start.value, t_end.value), (a.soar.Product('phi-hrt-blos') | a.soar.Product('phi-hrt-icnt')))`
+
 
 print(search_results_phi_hrt)
 
-files_phi_hrt = Fido.fetch(search_results_phi_hrt[0, 0])#, path='./your/path/to/save/PHI/data/')
+###############################################################################
+# Fetching the First Available PHI-HRT File
+# -----------------------------------------
+#
+# Once we have the search results, we fetch the first available file.
+# When a path isnt passed as a kwarg, the files will save locally into sunpy/data. 
+# You can also pass `path='./your/path/to/save/PHI/data/')` to choose where to save the data.
+files_phi_hrt = Fido.fetch(search_results_phi_hrt[0, 0])
 
-# Load the downloaded PHI-HRT blos image
+
+###############################################################################
+# Loading and Plotting PHI-HRT Data
+# ---------------------------------
+#
+# The downloaded file is in FITS format. We load it as a `sunpy.map.Map`
+# and adjust the plot settings for better visualization.
+
+# Load the downloaded PHI-HRT Blos image
 phi_hrt_blos_map = sunpy.map.Map(files_phi_hrt[0])
 
 # Update the Plot settings
@@ -73,9 +90,12 @@ plt.colorbar()
 plt.title("Solar Orbiter PHI-HRT Blos")
 plt.show()
 
-# ---------------------------------------------------------------
-# FDT Blos map
-# ---------------------------------------------------------------
+###############################################################################
+# Searching for PHI-FDT Blos Data
+# --------------------------------
+#
+# Now, we repeat the process for **Solar Orbiter PHI-FDT** (Full Disc Telescope) **Blos** data.
+
 
 t_start_fdt = Time('2022-04-08T03:10', format='isot', scale='utc')
 t_end_fdt = Time('2022-04-08T03:30', format='isot', scale='utc')
@@ -85,11 +105,16 @@ print(search_results_phi_fdt)
 
 files_phi_fdt = Fido.fetch(search_results_phi_fdt[0, 0])#, path='./your/path/to/save/PHI/data/')
 
-# Load the downloaded PHI-FDT blos image
+###############################################################################
+# Loading, Rotating, and Masking PHI-FDT Data
+# -------------------------------------------
+#
+# The PHI-FDT data needs to be **rotated and recentered** for correct visualization.
+# We also apply a **mask to remove off-disc pixels**.
+
 phi_fdt_blos_map = sunpy.map.Map(files_phi_fdt[0]).rotate(recenter = True) # Rotate the image to the correct orientation
 
 #clean up the off-disc pixels for better visualization
-
 #here we find the coordinators that are on the solar disk and create a mask
 hpc_coords = sunpy.map.all_coordinates_from_map(phi_fdt_blos_map)
 mask = ~sunpy.map.coordinate_is_on_solar_disk(hpc_coords)

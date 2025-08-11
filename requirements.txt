@@ -1,9 +1,12 @@
 numpy
 matplotlib
-sunpy  
-sunpy_soar  
+sunpy[all]  
+sunpy_soar 
 sphinx
 sphinx-gallery
+sphinx-design
+sphinx-copybutton  
+myst-nb  
+pydata-sphinx-theme  
 nbsphinx
 jupyter
-sunpy-sphinx-theme

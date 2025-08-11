@@ -106,7 +106,7 @@ def stokes_noise(stokes_values, show=False):
     return p
 
 ###############################################################################
-# Searching for PHI-HRT Blos Data 
+# Searching for PHI-HRT Blos and Stokes Data 
 # -----------------------------------------
 #
 # (Everything also applies to FDT data)

@@ -11,19 +11,16 @@ and line-of-sight magnetic field (L2 Blos) data from the Solar Orbiter PHI instr
 import sunpy_soar
 from sunpy.net import Fido, attrs as a
 from astropy.time import Time
-import sunpy.map
 import sunpy.visualization.colormaps
 import matplotlib.pyplot as plt
 from astropy.io import fits
 import numpy as np
+import scipy.optimize as spo
 
 
 ###############################################################################
 # Helper functions
 # -----------------------------------------
-
-import scipy.optimize as spo
-import numpy as np
 
 
 def find_nearest(array, value):
@@ -51,12 +48,14 @@ def gaussian_fit(a):
     p,cov=spo.curve_fit(gaus,xx,y,p0=p0)
     return p
 
-def blos_noise(blos_values):
+def blos_noise(blos_values, show=False):
     """
     plot blos hist + Gaussian fit
     """
     fig = plt.figure(figsize = (8,6))
     hi = plt.hist(blos_values.flatten(), bins=np.linspace(-2e2,2e2,100), histtype='stepfilled', alpha=0.5, edgecolor='black')
+    if not show:
+        plt.close(fig)
     tmp = [0,0]
     tmp[0] = hi[0].astype('float64')
     tmp[1] = hi[1].astype('float64')
@@ -65,41 +64,50 @@ def blos_noise(blos_values):
     p = gaussian_fit(tmp)    
     xx=hi[1][:-1] + (hi[1][1]-hi[1][0])/2
     lbl = r'$\mu=$' + f'{p[1]:.2f} G' + '\n' + r'$\sigma=$' + f'{p[2]:.2f} G'
-    plt.plot(xx,gaus(xx,*p),'r--', label=lbl)
-    plt.xlabel('BLOS [G]')
-    plt.ylabel('Counts')
-    plt.yscale('log')
-    plt.ylim(1e0,np.max(hi[0])*10)
-    plt.legend(loc='upper right', fontsize=20)
-    plt.tight_layout()
-    plt.show()
+    if show:
+        plt.plot(xx,gaus(xx,*p),'r--', label=lbl)
+        plt.xlabel('BLOS [G]')
+        plt.ylabel('Counts')
+        plt.yscale('log')
+        plt.ylim(1e0,np.max(hi[0])*10)
+        plt.legend(loc='upper right', fontsize=20)
+        plt.tight_layout()
+        plt.show()
 
-def stokes_noise(stokes_values):
+    return p
+
+def stokes_noise(stokes_values, show=False):
     """
     plot stokes v hist + Gaussian fit
     """
     fig = plt.figure(figsize = (8,6))
     hi = plt.hist(stokes_values.flatten(), bins=np.linspace(-1e-2,1e-2,200), histtype='stepfilled', alpha=0.5, edgecolor='black')
+    if not show:
+        plt.close(fig)
     tmp = [0,0]
     tmp[0] = hi[0].astype('float64')
     tmp[1] = hi[1].astype('float64')
 
     #guassian fit + label
     p = gaussian_fit(tmp)    
-    xx=hi[1][:-1] + (hi[1][1]-hi[1][0])/2
-    lbl = r'$\mu=$' + f'{p[1]:.5f}'+r' $V/I_c$' + '\n' + r'$\sigma=$' + f'{p[2]:.5f}'+r' $V/I_c$'
-    plt.plot(xx,gaus(xx,*p),'r--', label=lbl)
-    plt.xlabel(r'Stokes $V/I_c$')
-    plt.ylabel('Counts')
-    plt.yscale('log')
-    plt.ylim(1e0,np.max(hi[0])*10)
-    plt.legend(loc='upper right', fontsize=20)
-    plt.tight_layout()
-    plt.show()
+    
+    if show:
+        xx=hi[1][:-1] + (hi[1][1]-hi[1][0])/2
+        lbl = r'$\mu=$' + f'{p[1]:.5f}'+r' $V/I_c$' + '\n' + r'$\sigma=$' + f'{p[2]:.5f}'+r' $V/I_c$'
+        plt.plot(xx,gaus(xx,*p),'r--', label=lbl)
+        plt.xlabel(r'Stokes $V/I_c$')
+        plt.ylabel('Counts')
+        plt.yscale('log')
+        plt.ylim(1e0,np.max(hi[0])*10)
+        plt.legend(loc='upper right', fontsize=20)
+        plt.tight_layout()
+        plt.show()
+
+    return p
 
 ###############################################################################
 # Searching for PHI-HRT Blos Data (Everything also applies to FDT data)
-# --------------------------------
+# -----------------------------------------
 #
 # We first search for **Solar Orbiter PHI-HRT** (High Resolution Telescope) **Blos** data
 # in a given time range. The search results will return metadata about available files.
@@ -113,8 +121,8 @@ print(search_results_phi_hrt)
 sr_stokes = search_results_phi_hrt[0]
 sr_blos = search_results_phi_hrt[1]
 
-blos_file = Fido.fetch(sr_blos, path='../data/')
-stokes_file = Fido.fetch(sr_stokes, path='../data/')
+blos_file = Fido.fetch(sr_blos)#, path='../data/') - testing use case
+stokes_file = Fido.fetch(sr_stokes)#, path='../data/')
 
 blos = fits.getdata(blos_file[0])
 stokes = fits.getdata(stokes_file[0])
@@ -125,9 +133,9 @@ print(blos.shape), print(stokes.shape)
 # Blos noise
 # -----------------------------------------
 #
-# 1. Select an area of Quiet Sun (ie no significant magnetic structures)
-#    - Avoid the limb (unless you care about that)
-#    - Avoid the edges of the FoV if possible (although our example here is alredy cropped so no need to worry)
+# 1. Select an area of Quiet Sun (i.e. no significant magnetic structures)
+#     - Avoid the limb (unless you care about that)
+#     - Avoid the edges of the FoV if possible (although our example here is alredy cropped so no need to worry)
 #
 # It will be difficult to avoid some network structures, so there will be remnant signal in the area you choose.
 # Hence any 'noise' value we will now generate will be an overestimate.
@@ -138,7 +146,7 @@ plt.show()
 
 ###############################################################################
 #
-# The region bounded by (x,y) = (1200,200) and (x,y) = (1600,800) is a suitable region for analyzing the Blos noise.
+# The region bounded by (x,y) = (0,1200) and (x,y) = (500,1700) is a suitable region for analyzing the Blos noise.
 #
 
 x_start, x_end = 0, 500
@@ -150,15 +158,16 @@ region_slice = (slice(y_start, y_end), slice(x_start, x_end))
 Here you can see a small peak near -120G, which is most real signal and not noise.
 """
 
-blos_noise(blos[region_slice])
+blos_fit = blos_noise(blos[region_slice], show=True)
 
 ###############################################################################
 # Stokes noise
 # -----------------------------------------
 #
-# Typically when referring to the polarimetric noise, one refers to the noise level in Stokes V at the continuum wavelength
+# Typically when referring to the polarimetric noise, one refers to the noise level in Stokes V at the continuum wavelength.
 #
-# As before
+# As before:
+#
 # 1. Select an area of Quiet Sun (ie no significant magnetic structures)
 #     - Avoid the limb (unless you care about that)
 #     - Avoid the edges of the FoV
@@ -171,6 +180,7 @@ blos_noise(blos[region_slice])
 
 hdr = fits.getheader(stokes_file[0])
 contpos = hdr['CONTPOS']-1 #header is 1 based index, but python needs 0 based
+#WARNING: 'CONTPOS' may not exist in some 2022 or 2023 datasets. They will be reprocessed with updated headers soon.
 
 plt.imshow(stokes[contpos,3,:,:], cmap='gist_heat', vmin=-0.01, vmax = 0.01, origin="lower")
 plt.colorbar()
@@ -178,4 +188,4 @@ plt.show()
 
 ########################################
 
-stokes_noise(stokes[contpos,3,:,:][region_slice])
+stokes_fit = stokes_noise(stokes[contpos,3,:,:][region_slice], show=True)

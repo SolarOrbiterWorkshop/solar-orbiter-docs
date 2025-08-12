@@ -30,8 +30,8 @@ import matplotlib.pyplot as plt
 # We first search for **Solar Orbiter PHI-HRT** (High Resolution Telescope) **Blos** data
 # in a given time range. The search results will return metadata about available files.
 
-t_start_hrt = Time('2024-10-15T18:00:00', format='isot', scale='utc')
-t_end_hrt = Time('2024-10-15T18:00:35', format='isot', scale='utc')
+t_start_hrt = Time('2024-10-14T00:25:00', format='isot', scale='utc')
+t_end_hrt = Time('2024-10-14T00:35:00', format='isot', scale='utc')
 
 search_results_phi_hrt = Fido.search(a.Instrument('PHI'), a.Time(t_start_hrt.value, t_end_hrt.value), (a.soar.Product('phi-hrt-blos')))
 print(search_results_phi_hrt)
@@ -94,6 +94,94 @@ cbar = fig.colorbar(im, fraction=0.03)
 cbar.set_label('BLOS [G]')
 
 ###############################################################################
+# Compute Mu value in each PHI pixel to overplot contours of Mu
+# --------------------------------
+#
+# - mu = cos (heliocentric_angle) 
+# - $\mu = \cos(\theta)$ where $\theta$ is the heliocentric angle
+# - it describes the angle between the line-of-sight and the surface normal vector on the Sun
+# - Below are helper functions 
+
+def center_coord(hdr):
+    """calculate the center of the solar disk in the rotated reference system
+
+    center: [x,y,1] coordinates of the solar disk center (units: pixel)
+    """
+    pxsc = hdr['CDELT1']
+    crval1 = hdr['CRVAL1']
+    crval2 = hdr['CRVAL2']
+    crpix1 = hdr['CRPIX1']
+    crpix2 = hdr['CRPIX2']
+    if 'PC1_1' in hdr:
+        PC1_1 = hdr['PC1_1']
+        PC1_2 = hdr['PC1_2']
+        PC2_1 = hdr['PC2_1']
+        PC2_2 = hdr['PC2_2']
+    else:
+        if 'CROTA2' in hdr:
+            CROTA = hdr['CROTA2']
+        else:
+            CROTA = hdr['CROTA']
+        PC1_1 = np.cos(CROTA*np.pi/180)
+        PC1_2 = -np.sin(CROTA*np.pi/180)
+        PC2_1 = np.sin(CROTA*np.pi/180) 
+        PC2_2 = np.cos(CROTA*np.pi/180)
+    
+    HPC1 = 0
+    HPC2 = 0
+    
+    x0 = crpix1 + 1/pxsc * (PC1_1*(HPC1-crval1) - PC1_2*(HPC2-crval2)) - 1
+    y0 = crpix2 + 1/pxsc * (PC2_2*(HPC2-crval2) - PC2_1*(HPC1-crval1)) - 1
+    
+    return np.asarray([x0,y0,1])
+
+def muSO_arr(h,shape):
+    """compute mu in each pixel of array
+    """
+    if type(h) is str:
+        h = fits.getheader(h)
+    center=center_coord(h)
+    try:
+        Rpix=(h['RSUN_ARC']/h['CDELT1']) # PHI
+    except:
+        Rpix=(h['RSUN_OBS']/h['CDELT1']) # HMI
+    
+    X,Y = np.meshgrid(np.arange(shape[1]) - center[0],np.arange(shape[0]) - center[1])
+    mu = np.sqrt(Rpix**2 - (X**2 + Y**2)) / Rpix
+    return mu
+
+########################################
+
+hrt_mu = muSO_arr(blos_map.fits_header, blos_map.data.shape)
+
+########################################
+
+ax = plt.subplot(projection=blos_map)
+im = plt.imshow(blos_map.data,origin="lower", cmap='hmimag', vmin=-1500, vmax=1500)
+CS = plt.contour(hrt_mu, levels = np.linspace(0,1,11), colors='black')
+plt.clabel(CS, inline=True, fontsize=10)
+cbar = plt.colorbar(im)
+cbar.set_label(r'$\mu$')
+plt.show()
+
+########################################
+
+hrt_mu_map = sunpy.map.Map(hrt_mu, blos_map.fits_header)
+
+with propagate_with_solar_surface():
+        out_mu_map = hrt_mu_map.reproject_to(cea_hdr,algorithm='adaptive', kernel='Hann')
+
+########################################
+
+fig = plt.figure(figsize=(9,6)) 
+ax = plt.subplot(projection=outmap) # WCS-aware axes 
+im = outmap.plot(axes=ax)
+CS = plt.contour(out_mu_map.data, levels=np.linspace(0, 1, 11), colors='black')
+plt.clabel(CS, inline=True, fontsize=10)
+cbar = fig.colorbar(im, fraction=0.03)
+cbar.set_label('BLOS [G]')
+
+###############################################################################
 # Remap PHI-HRT BLOS onto HMI SHARP CEA magnetogram 
 # --------------------------------
 #
@@ -102,7 +190,7 @@ cbar.set_label('BLOS [G]')
 jsoc_email = os.environ["JSOC_EMAIL"]
 
 result = Fido.search(
-    a.Time("2024-10-15 18:11:00", "2024-10-15 18:13:00"),
+    a.Time("2024-10-14 00:35:00", "2024-10-14 00:37:00"),
     a.Sample(1*u.hour),
     a.jsoc.Series("hmi.sharp_cea_720s"),
     a.jsoc.PrimeKey("HARPNUM", 12032), #used JSOC, SolarMonitor and HEK to find out the right HARPNUM
@@ -136,6 +224,7 @@ plt.show()
 
 submap = outmap.submap(top_right = sharp_map.top_right_coord, bottom_left = sharp_map.bottom_left_coord)
 submap.plot_settings = sharp_map.plot_settings #set the same plot settings
+submap_mu = out_mu_map.submap(top_right = sharp_map.top_right_coord, bottom_left = sharp_map.bottom_left_coord)
 
 ########################################
 
@@ -147,6 +236,8 @@ cbar.set_label('BLOS [G]')
 
 ax1 = plt.subplot(212, projection=sharp_map)
 im1 = submap.plot(axes=ax1)
+CS = plt.contour(submap_mu.data, levels=np.linspace(0, 1, 11), colors='black')
+plt.clabel(CS, inline=True, fontsize=10)
 cbar = fig.colorbar(im1, fraction=0.03)
 cbar.set_label('BLOS [G]')
 plt.tight_layout()

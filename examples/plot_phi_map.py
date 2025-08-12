@@ -46,8 +46,8 @@ import matplotlib.pyplot as plt
 # in a given time range. The search results will return metadata about available files.
 
 
-t_start_hrt = Time('2022-03-03T09:40', format='isot', scale='utc')
-t_end_hrt = Time('2022-03-03T9:41', format='isot', scale='utc')
+t_start_hrt = Time('2024-03-23T20:00', format='isot', scale='utc')
+t_end_hrt = Time('2024-03-23T23:59', format='isot', scale='utc')
 
 search_results_phi_hrt = Fido.search(a.Instrument('PHI'), a.Time(t_start_hrt.value, t_end_hrt.value), a.soar.Product('phi-hrt-blos'))
 
@@ -80,14 +80,14 @@ phi_hrt_blos_map = sunpy.map.Map(files_phi_hrt[0])
 
 # Update the Plot settings
 phi_hrt_blos_map.plot_settings['cmap'] = 'hmimag'
-phi_hrt_blos_map.plot_settings['vmin'] = -2000
-phi_hrt_blos_map.plot_settings['vmax'] = 2000
+phi_hrt_blos_map.plot_settings['vmin'] = -1500
+phi_hrt_blos_map.plot_settings['vmax'] = 1500
 
 # Plot the PHI image
 plt.figure(figsize=(8, 6))
 phi_hrt_blos_map.plot()
 plt.colorbar()
-plt.title("Solar Orbiter PHI-HRT Blos")
+plt.title("SO/PHI-HRT Blos")
 plt.show()
 
 ###############################################################################
@@ -97,8 +97,8 @@ plt.show()
 # Now, we repeat the process for **Solar Orbiter PHI-FDT** (Full Disc Telescope) **Blos** data.
 
 
-t_start_fdt = Time('2022-04-08T03:10', format='isot', scale='utc')
-t_end_fdt = Time('2022-04-08T03:30', format='isot', scale='utc')
+t_start_fdt = Time('2024-08-08T00:00', format='isot', scale='utc')
+t_end_fdt = Time('2024-08-08T06:00', format='isot', scale='utc')
 
 search_results_phi_fdt = Fido.search(a.Instrument('PHI'), a.Time(t_start_fdt.value, t_end_fdt.value), a.soar.Product('phi-fdt-blos'))
 print(search_results_phi_fdt)
@@ -114,11 +114,6 @@ files_phi_fdt = Fido.fetch(search_results_phi_fdt[0, 0])#, path='./your/path/to/
 
 phi_fdt_blos_map = sunpy.map.Map(files_phi_fdt[0]).rotate(recenter = True) # Rotate the image to the correct orientation
 
-# Update the Plot settings
-phi_fdt_blos_map.plot_settings['cmap'] = 'hmimag'
-phi_fdt_blos_map.plot_settings['vmin'] = -2000
-phi_fdt_blos_map.plot_settings['vmax'] = 2000
-
 #clean up the off-disc pixels for better visualization
 #here we find the coordinators that are on the solar disk and create a mask
 hpc_coords = sunpy.map.all_coordinates_from_map(phi_fdt_blos_map)
@@ -127,11 +122,16 @@ mask = ~sunpy.map.coordinate_is_on_solar_disk(hpc_coords)
 #create a sunpy map object, with a mask which is applied when plotting
 phi_fdt_blos_map = sunpy.map.Map(phi_fdt_blos_map.data,phi_fdt_blos_map.meta, mask=mask)
 
+# Update the Plot settings
+phi_fdt_blos_map.plot_settings['cmap'] = 'hmimag'
+phi_fdt_blos_map.plot_settings['vmin'] = -1500
+phi_fdt_blos_map.plot_settings['vmax'] = 1500
+
 # Plot the PHI image
 plt.figure(figsize=(8, 6))
 phi_fdt_blos_map.plot()
 plt.colorbar()
-plt.title("Solar Orbiter PHI-FDT Blos")
+plt.title("SO/PHI-FDT Blos")
 plt.show()
 
 

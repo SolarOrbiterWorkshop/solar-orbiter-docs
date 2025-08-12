@@ -45,7 +45,7 @@ blos_map = sunpy.map.Map(blos_file[0])
 blos_map.plot_settings['cmap'] = 'hmimag'
 blos_map.plot_settings['vmin'] = -1500
 blos_map.plot_settings['vmax'] = 1500
-blos_map.plot()
+#blos_map.plot()
 
 ###############################################################################
 # Reproject PHI Blos to CEA 

@@ -84,7 +84,7 @@ html_theme_options = {
 
 
 # -- Sphinx-Gallery Configuration (Example Gallery) --------------------------
-
+os.environ["JSOC_EMAIL"] = "jsoc@sunpy.org"
 sphinx_gallery_conf = {
     'examples_dirs': '../examples',   # Path to example scripts
     'gallery_dirs': 'auto_gallery',   # Output path for gallery

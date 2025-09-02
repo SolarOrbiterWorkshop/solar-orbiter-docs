@@ -1,6 +1,6 @@
 numpy
 matplotlib
-sunpy[all]>=7.0 
+sunpy[all]>=6.1   
 sunpy_soar 
 sphinx
 sphinx-gallery

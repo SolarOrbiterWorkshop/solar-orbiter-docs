@@ -10,3 +10,4 @@ myst-nb
 pydata-sphinx-theme  
 nbsphinx
 jupyter
+cmasher

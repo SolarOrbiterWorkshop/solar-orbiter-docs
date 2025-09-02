@@ -1,4 +1,3 @@
-numpy
 matplotlib
 sunpy[all]  
 sunpy_soar 
@@ -10,3 +9,4 @@ myst-nb
 pydata-sphinx-theme  
 nbsphinx
 jupyter
+cmasher

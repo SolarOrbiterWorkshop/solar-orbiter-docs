@@ -11,3 +11,4 @@ pydata-sphinx-theme
 nbsphinx
 jupyter
 cmasher
+opencv-python

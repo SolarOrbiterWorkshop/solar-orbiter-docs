@@ -148,7 +148,7 @@ Metis_VL_CMAP.set_bad(color='tab:gray')  # np.nan values are in gray
 fig = plt.figure(figsize=(8, 6))
 ax = fig.add_subplot(projection=metis_vl_tb_map)
 im = metis_vl_tb_map.plot(axes=ax, cmap=Metis_VL_CMAP)
-metis_vl_tb_file.draw_limb(axes=ax, color='white', linewidth=1.0)
+metis_vl_tb_map.draw_limb(axes=ax, color='white', linewidth=1.0)
 fig.colorbar(im, label='Mean Solar Brightness (MSB)')
 ax.set_title('Metis VL tB '+ metis_vl_tb_map.date.strftime('%Y-%m-%d %H:%M:%S'))
 plt.show()

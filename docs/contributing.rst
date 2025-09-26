@@ -38,15 +38,20 @@ To make changes, follow these steps:
 
       git clone https://github.com/YOUR_USERNAME/solar-orbiter-docs.git
       cd solar-orbiter-docs
+3. To install dependencies locally, run:
 
-3. Create a new branch for your changes:
+   .. code-block:: bash
+
+      pip install -r requirements.txt
+
+4. Create a new branch for your changes:
 
    .. code-block:: bash
 
       git checkout -b update-docs
 
-4. Make edits to the `docs/` folder (e.g., update `.rst` files, add gallery examples).
-5. Test your changes locally:
+5. Make edits to the `docs/` folder (e.g., update `.rst` files, add gallery examples).
+6. Test your changes locally:
 
    .. code-block:: bash
 
@@ -55,7 +60,7 @@ To make changes, follow these steps:
       make html
 
    Open `_build/html/index.html` in a browser to check your updates.
-6. Commit and push your changes:
+7. Commit and push your changes:
 
    .. code-block:: bash
 
@@ -63,7 +68,7 @@ To make changes, follow these steps:
       git commit -m "Update documentation"
       git push origin update-docs
 
-7. Open a Pull Request on GitHub.
+8. Open a Pull Request on GitHub.
 
 For guidance on using GitHub, see the `Creating a pull request guide <https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request>`__.
 
@@ -123,8 +128,3 @@ Technical Details
 
 - This documentation is built using **Sphinx** and **PyData Sphinx Theme**.
 - Builds are automatically deployed via **Read the Docs**.
-- To install dependencies locally, run:
-
-   .. code-block:: bash
-
-      pip install -r requirements.txt
